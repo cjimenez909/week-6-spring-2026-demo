@@ -1,6 +1,12 @@
 import { LanguageComponent } from "@/app/components/skills/LanguageComponent";
 
 export function SkillsSection() {
+    const skills = [
+        {id: 1, language: "React", experience: 4, picture:"/reactlogo.png"},
+        {id: 2, language: "Python", experience: 3, picture:"/pythonlogo.png"},
+        {id: 3, language: "Java", experience: 2, picture:"/javalogo.png"},
+        {id: 4, language: "C++", experience: 5, picture:"/cpluspluslogo.png"}
+    ]
 
     return (
         <section 
@@ -14,26 +20,15 @@ export function SkillsSection() {
             </div>
 
             <div className="flex flex-wrap justify-center gap-8 max-w-5xl mx-auto px-6">
-                <LanguageComponent
-                    language="React"
-                    experience={4}
-                    picture="/reactlogo.png"
-                />
-                <LanguageComponent
-                    language="Python"
-                    experience={3}
-                    picture="/pythonlogo.png"
-                />
-                <LanguageComponent
-                    language="Java"
-                    experience={3}
-                    picture="/javalogo.png"
-                />
-                <LanguageComponent
-                    language="C++"
-                    experience={5}
-                    picture="/cpluspluslogo.png"
-                />
+                {skills.map((skill) => (
+                    <LanguageComponent
+                        key={skill.id}
+                        language={skill.language}
+                        experience={skill.experience}
+                        picture={skill.picture}
+                    />
+                ))}    
+            
             </div>
         </section>
     );

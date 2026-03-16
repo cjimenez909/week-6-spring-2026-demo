@@ -1,6 +1,8 @@
 import { ProjectsComponent } from "@/app/components/projects/ProjectsComponent";
+import { projectsData } from "./projectsData";
 
 export function ProjectSection() {
+
     return (
         <section
             id="projects"
@@ -13,19 +15,13 @@ export function ProjectSection() {
             </div>
 
             <div className="flex flex-wrap justify-center gap-8 max-w-6xl mx-auto px-6 w-full">
-
-                <ProjectsComponent
-                    title="Project 1"
-                    description="Description 1"
-                />
-                <ProjectsComponent
-                    title="Project 2"
-                    description="Description 2"
-                />
-                <ProjectsComponent
-                    title="Project 3"
-                    description="Description 3"
-                />
+                {projectsData.map((project) => (
+                    <ProjectsComponent 
+                        key={project.id}
+                        title={project.title}
+                        description={project.description}
+                    />
+                ))}
             </div>
         </section>
     );

@@ -1,11 +1,32 @@
+"use client";
+import { useState } from "react";
+import { ComponentOne } from "../components/about/ComponentOne";
+import { ComponentTwo } from "../components/about/ComponentTwo";
+import { ComponentThree } from "../components/about/ComponentThree";
+
 export function AboutSection() {
+    
+    const [showOne, setShowOne] = useState(true);
+    const [showTwo, setShowTwo] = useState(false);
+    const [showThree, setShowThree] = useState(false);
+    
+    
     const handleShowOne = () => {
+        setShowOne(true);
+        setShowTwo(false);
+        setShowThree(false);
     };
 
     const handleShowTwo = () => {
+        setShowOne(false);
+        setShowTwo(true);
+        setShowThree(false);
     };
 
     const handleShowThree = () => {
+        setShowOne(false);
+        setShowTwo(false);
+        setShowThree(true);
     };
 
     // Button style helper
@@ -29,20 +50,41 @@ export function AboutSection() {
                 {/* Navigation Buttons */}
                 <div className="flex flex-wrap justify-center gap-4 mb-12">
                     <button
-                    className={getButtonStyle(true)}
+                    className={getButtonStyle(showOne)}
+                    onClick={handleShowOne}
                     >
                         Background
                     </button>
                     <button
-                    className={getButtonStyle(false)}
+                    className={getButtonStyle(showTwo)}
+                    onClick={handleShowTwo}
                     >
                         Experience
                     </button>
                     <button
-                    className={getButtonStyle(false)}
+                    className={getButtonStyle(showThree)}
+                    onClick={handleShowThree}
                     >
                         Interests
                     </button>
+                    {showOne && 
+                        <>
+                            <ComponentOne/>
+                        </>
+                    }
+
+                    {showTwo && 
+                        <>
+                            <ComponentTwo/>
+                        </>
+                    }
+
+                    {showThree && 
+                        <>
+                            <ComponentThree/>
+                        </>
+                    }
+
                 </div>                
             </div>
         </section>
